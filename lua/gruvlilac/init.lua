@@ -1,3 +1,3 @@
+require("gruvlilac.set")
 require("gruvlilac.remap")
 require("gruvlilac.packer")
-print("hello from gruvlilac");

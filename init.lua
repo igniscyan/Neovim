@@ -1,2 +1,1 @@
 require("gruvlilac");
-print("hello");
