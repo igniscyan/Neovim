@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["copilot.vim"] = {
+    loaded = true,
+    path = "/home/gruvlilac/.local/share/nvim/site/pack/packer/start/copilot.vim",
+    url = "https://github.com/github/copilot.vim"
+  },
   ["gruvbox.nvim"] = {
     loaded = true,
     path = "/home/gruvlilac/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
@@ -108,6 +113,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/gruvlilac/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  undotree = {
+    loaded = true,
+    path = "/home/gruvlilac/.local/share/nvim/site/pack/packer/start/undotree",
+    url = "https://github.com/mbbill/undotree"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/gruvlilac/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   }
 }
 
