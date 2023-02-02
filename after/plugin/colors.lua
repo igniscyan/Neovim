@@ -4,7 +4,7 @@ require("gruvbox").setup({
 
 function ColorMyPencils(color)
 	color = color or "gruvbox";
-	vim.o.background=dark;
+	vim.o.background='dark'
 	vim.cmd.colorscheme(color);
 
 
