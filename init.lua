@@ -1,5 +1,19 @@
 require("gruvlilac");
-require("after.plugin.colors")
+
+require("gruvbox").setup({
+  transparent_mode = true,
+})
+
+function ColorMyPencils(color)
+  color = color or "gruvbox";
+  vim.o.background='dark'
+  vim.cmd.colorscheme(color);
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
+end
+
+
+ColorMyPencils()
 local function open_nvim_tree(data)
 
   -- buffer is a directory
@@ -15,5 +29,7 @@ local function open_nvim_tree(data)
   -- open the tree
   require("nvim-tree.api").tree.open()
 end
+
+
+
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
-ColorMyPencils()
