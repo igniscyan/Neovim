@@ -61,6 +61,7 @@ return require('packer').startup(function(use)
     "windwp/nvim-autopairs",
     config = function() require("nvim-autopairs").setup {} end
   }
+  use{"windwp/nvim-ts-autotag"}
   use "nvim-lua/plenary.nvim"
   use('MunifTanjim/prettier.nvim')
 end)
