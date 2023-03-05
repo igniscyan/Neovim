@@ -7,7 +7,21 @@ require('mason-lspconfig').setup({
     'lua_ls'
   }
 })
+
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities();
+local lsp_attach = function(clienbt, bufnr)
+end
+
 local lspconfig = require('lspconfig')
+
+require('mason-lspconfig').setup_handlers({
+  function(server_name)
+    lspconfig[server_name].setup({
+      on_attach=lsp_attach,
+      capabilities = lsp_capabilities
+    })
+  end,
+})
 local lsp_defaults = lspconfig.util.default_config;
 
 lsp_defaults.capabilities = vim.tbl_deep_extend(
@@ -20,6 +34,13 @@ lspconfig.lua_ls.setup({
   single_file_support = true,
   flags = {
     debounce_text_changes = 150,
+  },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'}
+      }
+    }
   }
 })
 
