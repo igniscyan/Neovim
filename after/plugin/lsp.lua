@@ -1,75 +1,73 @@
-local lsp = require("lsp-zero")
+require('mason').setup()
 
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-  'tsserver',
-  'lua_ls',
-  'rust_analyzer',
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'rust_analyzer',
+    'tsserver',
+    'lua_ls'
+  }
 })
+local lspconfig = require('lspconfig')
+local lsp_defaults = lspconfig.util.default_config;
 
--- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { 'vim' }
-      }
-    }
+lsp_defaults.capabilities = vim.tbl_deep_extend(
+  'keep',
+  lsp_defaults.capabilities,
+  require ('cmp_nvim_lsp').default_capabilities()
+)
+
+lspconfig.lua_ls.setup({
+  single_file_support = true,
+  flags = {
+    debounce_text_changes = 150,
   }
 })
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function()
+    local bufmap = function(mode, lhs, rhs)
+      local opts = {buffer = true}
+      vim.keymap.set(mode, lhs, rhs, opts)
+    end
 
+    -- Displays hover information about the symbol under the cursor
+    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
 
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
+    -- Jump to the definition
+    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
+
+    -- Jump to declaration
+    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+
+    -- Lists all the implementations for the symbol under the cursor
+    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+
+    -- Jumps to the definition of the type symbol
+    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+
+    -- Lists all the references 
+    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
+
+    -- Displays a function's signature information
+    bufmap('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+
+    -- Renames all references to the symbol under the cursor
+    bufmap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>')
+
+    -- Selects a code action available at the current cursor position
+    bufmap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>')
+
+    -- Show diagnostics in a floating window
+    bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+
+    -- Move to the previous diagnostic
+    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+
+    -- Move to the next diagnostic
+    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+  end
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings,
-  sources = {
-    {name = 'path'},
-    {name = 'nvim_lsp', keyword_length = 4},
-    {name = 'buffer', keyword_length = 3},
-    {name = 'luasnip', keyword_length = 2},
-  }
-})
-
-lsp.set_preferences({
-  suggest_lsp_servers = false,
-  sign_icons = {
-    error = 'E',
-    warn = 'W',
-    hint = 'H',
-    info = 'I'
-  }
-})
-
-lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-end)
-
-lsp.setup()
-
-vim.diagnostic.config({
-  virtual_text = true
-})
