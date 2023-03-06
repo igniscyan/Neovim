@@ -26,6 +26,7 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
+require("bufferline").setup{}
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"

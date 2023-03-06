@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-nvim-lua'
-  
+
   --Mason goodness
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
@@ -27,6 +27,7 @@ return require('packer').startup(function(use)
 
 
 
+  -- Plugs recommended by the Primeagen. 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     -- or				 , branch = '0.1.x',
@@ -54,7 +55,7 @@ return require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
   use {
-    'akinsho/bufferline.nvim', 
+    'akinsho/bufferline.nvim',
     tag = "v3.*",
     requires = 'nvim-tree/nvim-web-devicons' }
 
@@ -66,4 +67,18 @@ return require('packer').startup(function(use)
   use{"windwp/nvim-ts-autotag"}
   use "nvim-lua/plenary.nvim"
   use('MunifTanjim/prettier.nvim')
+  --Paperplanes for pastebin
+  use('rktjmp/paperplanes.nvim')
+  --Get trouble.nvim
+  use {
+    "folke/trouble.nvim",
+    requires = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 end)
