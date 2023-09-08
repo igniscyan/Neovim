@@ -1,0 +1,157 @@
+﻿Diagnose log at 2023-09-07T02:58:27Z
+
+AppPath: /usr/local/bin/git-credential-manager
+InstallDir: /usr/local/share/gcm-core/
+Version: 2.3.2
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: macOS
+OSVersion: 13.5.0
+Reading environment variables... OK
+ Variables:
+PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/Users/deradmin/.nvm/versions/node/v18.16.1/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/deradmin/.cargo/bin
+NVM_BIN=/Users/deradmin/.nvm/versions/node/v18.16.1/bin
+LC_TERMINAL=iTerm2
+TERM=xterm-256color
+PWD=/Users/deradmin/.config/nvim
+HOMEBREW_REPOSITORY=/opt/homebrew
+LANG=en_US.UTF-8
+NVM_DIR=/Users/deradmin/.nvm
+SECURITYSESSIONID=186a4
+OLDPWD=/Users/deradmin/.config
+ITERM_SESSION_ID=w0t0p0:A3132CB8-DBDA-4CB8-B805-6048CC21DD2B
+__CFBundleIdentifier=com.googlecode.iterm2
+NVM_INC=/Users/deradmin/.nvm/versions/node/v18.16.1/include/node
+XPC_FLAGS=0x0
+COLORTERM=truecolor
+LOGNAME=deradmin
+HOMEBREW_PREFIX=/opt/homebrew
+INFOPATH=/opt/homebrew/share/info:
+HOMEBREW_CELLAR=/opt/homebrew/Cellar
+USER=deradmin
+TERM_PROGRAM=iTerm.app
+TERM_SESSION_ID=w0t0p0:A3132CB8-DBDA-4CB8-B805-6048CC21DD2B
+LC_TERMINAL_VERSION=3.4.20
+MANPATH=/Users/deradmin/.nvm/versions/node/v18.16.1/share/man:/opt/homebrew/share/man::
+XPC_SERVICE_NAME=0
+SHLVL=2
+COMMAND_MODE=unix2003
+GIT_TRACE2_PARENT_SID=20cf29fd-38a8-42b6-9fee-804f6088175c
+LaunchInstanceID=D0ACC496-59BA-42BA-82B7-39F90EC7771E
+__CF_USER_TEXT_ENCODING=0x1F5:0x0:0x0
+SHELL=/bin/zsh
+SSH_AUTH_SOCK=/private/tmp/com.apple.launchd.CrD36OVsec/Listeners
+COLORFGBG=15;0
+TERM_PROGRAM_VERSION=3.4.20
+TMPDIR=/var/folders/2q/898wlb7j2jl0dwfpg3v07l440000gn/T/
+ITERM_PROFILE=Default
+HOME=/Users/deradmin
+NVM_CD_FLAGS=-q
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is '/var/folders/2q/898wlb7j2jl0dwfpg3v07l440000gn/T/'...
+Checking basic file I/O...
+Writing to temporary file '/var/folders/2q/898wlb7j2jl0dwfpg3v07l440000gn/T/f379432f945f1ea1e5c61f9a'... OK
+Reading from temporary file '/var/folders/2q/898wlb7j2jl0dwfpg3v07l440000gn/T/f379432f945f1ea1e5c61f9a'... OK
+Deleting temporary file '/var/folders/2q/898wlb7j2jl0dwfpg3v07l440000gn/T/f379432f945f1ea1e5c61f9a'... OK
+Testing IFileSystem instance...
+UserHomePath: /Users/deradmin
+UserDataDirectoryPath: /Users/deradmin/.gcm
+GetCurrentDirectory(): /Users/deradmin/.config/nvim
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:50864/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.39.2 (Apple Git-143)'
+Locating current repository... OK
+Git repository at '/Users/deradmin/.config/nvim/.git'
+Listing all Git configuration... OK
+Git configuration:
+file:/Library/Developer/CommandLineTools/usr/share/git-core/gitconfig	credential.helper=osxkeychain
+file:/Library/Developer/CommandLineTools/usr/share/git-core/gitconfig	init.defaultbranch=main
+file:/Users/deradmin/.gitconfig	user.email=bwclark97@gmail.com
+file:/Users/deradmin/.gitconfig	user.name=Brandon Clark
+file:/Users/deradmin/.gitconfig	credential.helper=
+file:/Users/deradmin/.gitconfig	credential.helper=/usr/local/share/gcm-core/git-credential-manager
+file:/Users/deradmin/.gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=true
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.ignorecase=true
+file:.git/config	core.precomposeunicode=true
+file:.git/config	remote.origin.url=https://github.com/igniscyan/neovim.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: /Users/deradmin/.local/.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: /Users/deradmin/.local/.IdentityService/msal.cache
+MacKeyChainAccountName: MSALCache
+MacKeyChainServiceName: Microsoft.Developer.IdentityService
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+

@@ -22,6 +22,9 @@ return {
     config = function()
       require ("gruvlilac.keymaps.base").initialize()
     end,
-  }
+  },
+   { "MunifTanjim/nui.nvim",   event = "VeryLazy" },
+  { "vigoux/notifier.nvim" },
+  { "windwp/nvim-ts-autotag", event = "VeryLazy" },
 }
     

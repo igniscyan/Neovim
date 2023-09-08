@@ -4,7 +4,7 @@ end
 
 return {
   {
-    "folke/tokyonight.nvim",
+    "ellisonleao/gruvbox.nvim",
     -- "savq/melange-nvim",
     dependencies = {
       "nvim-lualine/lualine.nvim",
@@ -14,24 +14,23 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("tokyonight").setup({
+      require("gruvbox").setup({
         transparent = true,
       })
       -- local theme = "melange"
       --
       local os_theme = vim.env.OS_THEME
-
+      local theme = 'gruvbox';
       print(os_theme)
-      local theme = ""
+      local background = ""
       if os_theme == "Light" then
-        theme = "tokyonight-day"
+        vim.o.background = "light";
       else
-        theme = "tokyonight-moon"
+        vim.o.background = "dark"
       end
       vim.opt.termguicolors = true
       -- vim.cmd.colorscheme "melange"
       vim.cmd("colorscheme " .. theme)
-
       -- <<< NORD THEME >>>
       -- vim.g.nord_borders = true
       -- vim.g.nord_disable_background = true
@@ -53,7 +52,7 @@ return {
 
       require("lualine").setup({
         options = {
-          theme = "tokyonight",
+          theme = "gruvbox",
         },
         sections = {
           lualine_y = {
@@ -86,7 +85,7 @@ return {
         symbols = {
           separator = "",
         },
-        theme = "tokyonight",
+        theme = "gruvbox",
       })
     end,
   },
