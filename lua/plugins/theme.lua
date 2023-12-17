@@ -21,7 +21,6 @@ return {
       --
       local os_theme = vim.env.OS_THEME
       local theme = 'gruvbox';
-      print(os_theme)
       local background = ""
       if os_theme == "Light" then
         vim.o.background = "light";
